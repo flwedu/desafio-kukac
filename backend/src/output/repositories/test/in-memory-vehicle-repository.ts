@@ -6,7 +6,7 @@ export class InMemoryVehicleRepository implements IVehicleRepository {
 
   async save(vehicle: IVehicle) {
     this.list.push(vehicle);
-    return Promise.resolve(JSON.stringify(vehicle));
+    return Promise.resolve(vehicle);
   }
 
   async loadAll() {

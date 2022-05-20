@@ -1,4 +1,5 @@
 import { InMemoryVehicleRepository } from "../../output/repositories/test/in-memory-vehicle-repository";
+import Car from "../domain/vehicle/car";
 import RegisterCarUseCase from "./register-car";
 
 describe("Register Car use case tests", () => {
@@ -13,9 +14,7 @@ describe("Register Car use case tests", () => {
       year: 2013,
     });
 
-    expect(result).toEqual(
-      `{"model":"Fiesta","year":2013,"doors":4,"brand":"Ford"}`
-    );
+    expect(result).toMatchObject({ ...Car });
   });
 
   test("Should throw an error", async () => {
