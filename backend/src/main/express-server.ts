@@ -1,11 +1,11 @@
+import bodyParser, { json } from "body-parser";
 import Express, { Router } from "express";
 
 const app = Express();
 
 const configureExpressApp = (routes?: Router) => {
   // Middlewares
-  app.use(Express.json());
-  app.use(Express.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
 
   //Routes
   if (routes) app.use("/", routes);
