@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { PalindromeController } from "./controllers";
 
 const router = Router();
 
@@ -6,7 +7,9 @@ const configureRoutes = () => {
   router.get("/status", (req, res) => {
     return res.status(200).send();
   });
-  router.post("palindrome", (req, res) => {});
+  router.post("/palindrome", (req, res) => {
+    new PalindromeController().handle(req, res);
+  });
   router.post("/money", (req, res) => {});
   router.post("/card", (req, res) => {});
   router.post("/motorcycle", (req, res) => {});
