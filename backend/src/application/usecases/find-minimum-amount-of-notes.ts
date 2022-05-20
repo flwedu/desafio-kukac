@@ -1,4 +1,5 @@
 import { greedy } from "../../algorithms/greedy";
+import { checkAndParseToNumber } from "../../util/util-functions";
 import {
   BusinessLogicError,
   ErrorMessages,
@@ -7,7 +8,12 @@ import {
 export default class FindMinimumAmountOfNotes {
   public availableNotes = [100, 10, 1];
 
-  execute(money: number, price: number) {
+  execute(moneyInput: number | string, priceInput: number | string) {
+    const [money, price] = [
+      checkAndParseToNumber(moneyInput),
+      checkAndParseToNumber(priceInput),
+    ];
+
     if (price > money) {
       throw new BusinessLogicError(ErrorMessages.VALOR_INVALIDO);
     }
