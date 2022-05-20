@@ -1,3 +1,4 @@
+import { testPalindrome } from "../../algorithms/palindrome";
 import {
   BusinessLogicError,
   ErrorMessages,
@@ -15,13 +16,6 @@ export default class PrintPalindromeUseCase {
     throw new BusinessLogicError(ErrorMessages.VALOR_INVALIDO);
   }
 
-  private testPalindrome(value: number) {
-    const valueStr = String(value);
-    const invertedStr = valueStr.split("").reverse().join("");
-
-    return valueStr == invertedStr;
-  }
-
   execute(initialValue: string | number, finalValue: string | number) {
     const [parsedInitial, parsedFinal] = [
       this.checkAndParseToNumber(initialValue),
@@ -34,6 +28,6 @@ export default class PrintPalindromeUseCase {
 
     const numbers = [];
     for (let i = parsedInitial; i <= parsedFinal; i++) numbers.push(i);
-    return numbers.filter(this.testPalindrome);
+    return numbers.filter(testPalindrome);
   }
 }
