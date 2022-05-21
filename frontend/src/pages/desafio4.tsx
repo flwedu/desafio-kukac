@@ -60,7 +60,11 @@ export default function Desafio4() {
 }
 
 function formatQuery(text: string): string[] {
-  let arr = text.split(/[\s\n;,]/);
+  // Sanitizing
+  text = text.replaceAll(/[a-z\-]/gi, "");
+  text = text.replaceAll(/[\s;,]/gi, "\n");
+
+  let arr = text.split("\n");
   // Pick only the first 5 positions
   // Add missing zeroes
   arr = arr.slice(0, 5).map((el) => el.padEnd(8, "0"));
