@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
+
 $color--card: #fdfdfd;
 $color--white: #fff;
 $color--bg: #d7d7d7;
@@ -10,6 +12,7 @@ $color--light-green: #caffc3;
 body {
   background-color: $color--bg;
   text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 
 code {
@@ -19,6 +22,8 @@ code {
 
 input[type="text"],
 input[type="number"] {
+  font-family: "Roboto", sans-serif;
+  font-size: larger;
   margin: 0.5rem;
   border-radius: 3px;
   border: $color--bg 1px solid;
@@ -42,6 +47,7 @@ button,
 
 .form-group {
   textarea {
+    font-family: "Roboto", sans-serif;
     font-size: larger;
     resize: vertical;
     margin-bottom: 1rem;
@@ -62,6 +68,11 @@ button,
 
 .response {
   textarea {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 300;
     resize: vertical;
     padding: 0.5rem 1rem;
     width: 90%;
