@@ -12,12 +12,12 @@ class RegisterVehicleController {
     const type = req.body.type;
     let results;
 
-    if (type === "Car") {
-      const props: CarProps = req.body.props;
+    if (type === "car") {
+      const props: CarProps = req.body;
       results = await new RegisterCarUseCase(this.repository).execute(props);
     }
-    if (type === "Motorcycle") {
-      const props: MotorcycleProps = req.body.props;
+    if (type === "motorcycle") {
+      const props: MotorcycleProps = req.body;
       results = await new RegisterMotorcycleUseCase(this.repository).execute(
         props
       );
