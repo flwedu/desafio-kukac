@@ -31,8 +31,8 @@ export default function Desafio1() {
         <h1>Desafio 1 - Palíndromos</h1>
         <p>
           Números palíndromos são aqueles que escritos da direita para esquerda
-          ou da esquerda para direita tem o mesmo valor. Exemplo: 929, 44,
-          97379.
+          ou da esquerda para direita tem o mesmo valor. Exemplos:{" "}
+          <code>929</code>, <code>44</code> e <code>97379</code>.
           <br />
           Esse programa exibe todos os números palíndromos dentro de um
           intervalo definido por você.

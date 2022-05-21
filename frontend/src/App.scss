@@ -3,10 +3,16 @@ $color--white: #fff;
 $color--bg: #d7d7d7;
 $color--shadow: #1e1e1e;
 $color--main: #0091eb;
+$color--code: #9100f9;
 
 body {
   background-color: $color--bg;
   text-align: center;
+}
+
+code {
+  font-weight: 600;
+  color: $color--code;
 }
 
 input {
