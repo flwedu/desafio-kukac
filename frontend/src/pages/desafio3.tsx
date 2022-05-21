@@ -31,8 +31,17 @@ export default function Desafio3() {
     // Verify if form is valid
     if (form.checkValidity()) {
       const queryData = JSON.stringify(query);
-      service.post(queryData).then(setResults).catch(console.error);
+      service
+        .post(queryData)
+        .then(formatResponseAndSetResults)
+        .catch(console.error);
     }
+  }
+
+  function formatResponseAndSetResults(response: string) {
+    setResults(`Foi inserido um veículo com as seguintes propriedades:
+  ${JSON.stringify(response)}
+    `);
   }
 
   return (
@@ -94,6 +103,8 @@ export default function Desafio3() {
     </div>
   );
 }
+
+// Car Exclusive Form Fields
 function CarFormFields({ query, setQuery }: any) {
   useEffect(() => {
     setQuery({
@@ -114,6 +125,7 @@ function CarFormFields({ query, setQuery }: any) {
   );
 }
 
+// Motorcycle Exclusive Form Fields
 function MotorcycleFormFields({ query, setQuery }: any) {
   useEffect(() => {
     setQuery({
