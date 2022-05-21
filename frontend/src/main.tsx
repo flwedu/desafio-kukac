@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router-dom";
+import "./App.scss";
 import NavBar from "./components/navbar";
 import Desafio1 from "./pages/desafio1";
 import Home from "./pages/home";

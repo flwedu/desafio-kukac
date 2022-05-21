@@ -1,0 +1,49 @@
+$color--card: #fdfdfd;
+$color--white: #fff;
+$color--bg: #d7d7d7;
+$color--shadow: #1e1e1e;
+$color--main: #0091eb;
+
+body {
+  background-color: $color--bg;
+  text-align: center;
+}
+
+input {
+  margin: 0.5rem;
+  border-radius: 3px;
+  border: $color--bg 1px solid;
+  width: 10rem;
+  padding: 0.5rem;
+
+  //Remove arrow/spinner
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+button {
+  border: transparent;
+  border-radius: 3px;
+  color: $color--white;
+  background-color: $color--main;
+  width: 5rem;
+  padding: 0.5rem;
+}
+
+.card {
+  max-width: 30rem;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem auto;
+  background-color: $color--card;
+  box-shadow: $color--shadow 1rem 0.5rem 1rem;
+}
+
+.response {
+  textarea {
+    resize: vertical;
+    padding: 0.5rem 1rem;
+    width: 90%;
+    min-height: 8rem;
+  }
+}
