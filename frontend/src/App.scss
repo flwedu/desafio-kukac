@@ -38,6 +38,17 @@ button {
   padding: 0.5rem;
 }
 
+.form-group {
+  textarea {
+    font-size: larger;
+    resize: vertical;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    width: 80%;
+    min-height: 6rem;
+  }
+}
+
 .card {
   max-width: 30rem;
   border-radius: 8px;
