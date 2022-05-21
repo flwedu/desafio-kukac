@@ -7,6 +7,14 @@ type Desafio2Query = {
   price: string;
 };
 
+type ResponseData = {
+  price: number;
+  returned: number;
+  m100: number;
+  m10: number;
+  m1: number;
+};
+
 export default function Desafio2() {
   const service = new ApiService("http://localhost:3002/money");
 
@@ -21,8 +29,19 @@ export default function Desafio2() {
   function handleSubmit() {
     if (query.money.length > 0 && query.price.length > 0) {
       const queryData = JSON.stringify(query);
-      service.post(queryData).then(setResults).catch(console.error);
+      service.post(queryData).then(formatResult).catch(console.error);
     }
+  }
+
+  function formatResult(response: ResponseData) {
+    const text = `Preço do produto: ${response.price}
+Valor do troco: ${response.returned}
+Cédulas utilizadas:
+    - R$ 100,00: ${response.m100}
+    - R$  10,00: ${response.m10}
+    - R$   1,00: ${response.m1}
+`;
+    setResults(text);
   }
 
   return (
