@@ -50,8 +50,8 @@ export default function Desafio4() {
         <div className="response card">
           <p>Esses são os resultados: </p>
 
-          {results.map((result) => (
-            <CepAddressCard data={result} />
+          {results.map((result, index) => (
+            <CepAddressCard key={index} data={result} />
           ))}
         </div>
       )}
