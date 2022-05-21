@@ -1,25 +1,40 @@
+import fs from "fs/promises";
+import path from "path";
 import IVehicle from "../../application/domain/vehicle/vehicle";
 import IVehicleRepository from "./vehicle-repository";
 
 export class JsonVehicleRepository implements IVehicleRepository {
-  constructor(private readonly serverUrl: string) {}
+  private dbPath: string;
+  private dbFileName: string;
+
+  constructor(dbFileName: string) {
+    this.dbFileName = dbFileName;
+    this.dbPath = path.resolve(__dirname, "../../../", this.dbFileName);
+  }
+
+  private returnError(err: any) {
+    return Promise.reject(err);
+  }
 
   async save(vehicle: IVehicle) {
-    const response = await fetch(this.serverUrl, {
-      method: "POST",
-      body: JSON.stringify(vehicle),
-    });
-    if (response.status === 200) {
+    try {
+      const data = await fs.readFile(this.dbPath, "utf8");
+      const arr = JSON.parse(data);
+      arr.vehicles.push(vehicle);
+      await fs.writeFile(this.dbPath, JSON.stringify(arr));
       return vehicle;
+    } catch (error) {
+      return this.returnError(error);
     }
-    return Promise.reject("Error saving vehicle");
   }
 
   async loadAll() {
-    const response = await fetch(this.serverUrl, { method: "GET" });
-    if (response.status === 200) {
-      return await response.json();
+    try {
+      const data = await fs.readFile(this.dbPath, "utf8");
+      const arr = JSON.parse(data);
+      return arr;
+    } catch (error) {
+      return this.returnError(error);
     }
-    return Promise.reject("Error loading vehicles");
   }
 }
