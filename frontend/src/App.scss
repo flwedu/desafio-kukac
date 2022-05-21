@@ -17,7 +17,8 @@ code {
   color: $color--code;
 }
 
-input {
+input[type="text"],
+input[type="number"] {
   margin: 0.5rem;
   border-radius: 3px;
   border: $color--bg 1px solid;
@@ -29,7 +30,8 @@ input {
   -moz-appearance: textfield;
 }
 
-button {
+button,
+.button {
   border: transparent;
   border-radius: 3px;
   color: $color--white;
@@ -50,7 +52,7 @@ button {
 }
 
 .card {
-  max-width: 30rem;
+  max-width: 35rem;
   border-radius: 8px;
   padding: 1rem;
   margin: 1rem auto;
@@ -82,5 +84,42 @@ button {
   .body {
     font-weight: 300;
     padding: 0.5rem;
+  }
+}
+
+// Special
+.grid {
+  display: grid;
+  justify-content: space-around;
+  &-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  * {
+    justify-self: center;
+  }
+}
+
+.flex {
+  display: flex;
+
+  &-col {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  * {
+    margin: 0.5rem;
   }
 }
