@@ -13,7 +13,7 @@ const configureRoutes = () => {
   router.post("/money", (req, res) => {
     new MoneyController().handle(req, res);
   });
-  router.post("/card", (req, res) => {});
+  router.post("/car", (req, res) => {});
   router.post("/motorcycle", (req, res) => {});
 
   return router;
