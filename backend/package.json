@@ -6,8 +6,9 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "start": "tsc && json-server --watch vehiclesdb.json --port 3001 && node dist/index.js",
-    "dev": "json-server --watch vehiclesdb.json --port 3001 && ts-node-dev src/index.ts"
+    "serve": "json-server --watch vehiclesdb.json --port 3001",
+    "start": "tsc && node dist/index.js",
+    "dev": "ts-node-dev src/index.ts"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
