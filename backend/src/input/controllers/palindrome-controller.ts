@@ -6,6 +6,6 @@ export class PalindromeController {
     const { initial, final } = req.body;
     const results = new PrintPalindromeUseCase().execute(initial, final);
 
-    return res.json(results);
+    return res.json(results.join(" "));
   }
 }
