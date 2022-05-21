@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ResponseCard from "../components/response-card";
 import { ApiService } from "../services/api-service";
 
 export type Desafio1Query = {
@@ -57,18 +58,7 @@ export default function Desafio1() {
         </button>
       </div>
 
-      {results && (
-        <div className="response card">
-          <h2>Resposta</h2>
-          <p>Esse é o resultado: </p>
-          <textarea
-            readOnly
-            name="results"
-            id="results"
-            value={results}
-          ></textarea>
-        </div>
-      )}
+      {results && <ResponseCard results={results} />}
     </div>
   );
 }
