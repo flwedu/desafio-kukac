@@ -1,9 +1,9 @@
 export class ApiService {
   constructor(private readonly url: string) {}
 
-  async get() {
+  async get(path = "") {
     try {
-      const results = await fetch(this.url, {
+      const results = await fetch(this.url + path, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -19,9 +19,9 @@ export class ApiService {
     }
   }
 
-  async post(query: string) {
+  async post(query: string, path = "") {
     try {
-      const results = await fetch(this.url, {
+      const results = await fetch(this.url + path, {
         body: query,
         method: "POST",
         headers: {
