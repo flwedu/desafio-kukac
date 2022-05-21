@@ -1,10 +1,12 @@
-import bodyParser, { json } from "body-parser";
+import bodyParser from "body-parser";
+import cors from "cors";
 import Express, { Router } from "express";
 
 const app = Express();
 
 const configureExpressApp = (routes?: Router) => {
   // Middlewares
+  app.use(cors());
   app.use(bodyParser.json());
 
   //Routes
