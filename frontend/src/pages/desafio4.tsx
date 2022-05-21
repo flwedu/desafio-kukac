@@ -1,19 +1,31 @@
 import { useState } from "react";
-import ResponseCard from "../components/response-card";
+import CepAddressCard from "../components/cep-address-card";
 import { ApiService } from "../services/api-service";
 
 export default function Desafio4() {
-  const service = new ApiService("http://localhost:3002/ceps");
+  const service = new ApiService("https://viacep.com.br/ws/");
 
   const [text, setText] = useState<string>("");
-  const [results, setResults] = useState<string>("");
+  const [results, setResults] = useState<string[]>([]);
 
   function handleTextAreaChange(event: any) {
     setText(event.target.value);
   }
 
-  function handleSubmit() {
-    service.post(text).then(setResults).catch(console.error);
+  async function handleSubmit() {
+    const queries = formatQuery(text);
+    const results = await postAllQueries(queries);
+
+    setResults(results);
+  }
+
+  async function postAllQueries(query: string[]) {
+    const results = await Promise.all(
+      query.map((query) => {
+        return service.get(`${query}/json`);
+      })
+    );
+    return results;
   }
 
   return (
@@ -22,7 +34,7 @@ export default function Desafio4() {
         <h1>Desafio 4 - Busca por CEP's</h1>
         <p>
           Digite abaixo um número de CEP para efetuar a busca pelos dados. Até 5
-          CEP's podem ser informados por busca, separados por <code>";"</code>.
+          CEP's podem ser informados por busca, um em cada linha.
         </p>
       </div>
       <div className="form-group card">
@@ -34,7 +46,24 @@ export default function Desafio4() {
         ></textarea>
         <button onClick={handleSubmit}>Consultar</button>
       </div>
-      {results && <ResponseCard results={results} />}
+      {results.length > 0 && (
+        <div className="response card">
+          <p>Esses são os resultados: </p>
+
+          {results.map((result) => (
+            <CepAddressCard data={result} />
+          ))}
+        </div>
+      )}
     </div>
   );
+}
+
+function formatQuery(text: string): string[] {
+  let arr = text.split(/[\s\n;,]/);
+  // Pick only the first 5 positions
+  // Add missing zeroes
+  arr = arr.slice(0, 5).map((el) => el.padEnd(8, "0"));
+
+  return arr;
 }
