@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PalindromeService } from "../services/palindrome-service";
+import { ApiService } from "../services/api-service";
 
 export type Desafio1Query = {
   initial: string;
@@ -7,7 +7,7 @@ export type Desafio1Query = {
 };
 
 export default function Desafio1() {
-  const service = new PalindromeService("http://localhost:3002/palindrome");
+  const service = new ApiService("http://localhost:3002/palindrome");
 
   const [query, setQuery] = useState<Desafio1Query>({ initial: "", final: "" });
   const [results, setResults] = useState("");
@@ -18,8 +18,10 @@ export default function Desafio1() {
   }
 
   function handleSubmit() {
-    if (query.initial.length > 0 && query.final.length > 0)
-      service.execute(query).then(setResults);
+    if (query.initial.length > 0 && query.final.length > 0) {
+      const queryData = JSON.stringify(query);
+      service.post(queryData).then(setResults).catch(console.error);
+    }
   }
 
   return (
