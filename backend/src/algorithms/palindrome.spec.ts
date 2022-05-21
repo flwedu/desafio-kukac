@@ -9,7 +9,7 @@ describe("Test Palindrome function tests", () => {
   );
 
   test.each([12, -2, null, 2003, 1129921])(
-    "should false true for $s",
+    "should return false for $s",
     (value) => {
       expect(testPalindrome(value)).toBeFalsy();
     }
