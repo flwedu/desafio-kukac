@@ -24,15 +24,18 @@ export default function Desafio1() {
 
   return (
     <div>
-      <h1>Desafio 1 - Palíndromos</h1>
-      <p>
-        Números palíndromos são aqueles que escritos da direita para esquerda ou
-        da esquerda para direita tem o mesmo valor. Exemplo: 929, 44, 97379.
-        <br />
-        Esse programa exibe todos os números palíndromos dentro de um intervalo
-        definido por você.
-      </p>
-      <div>
+      <div className="card">
+        <h1>Desafio 1 - Palíndromos</h1>
+        <p>
+          Números palíndromos são aqueles que escritos da direita para esquerda
+          ou da esquerda para direita tem o mesmo valor. Exemplo: 929, 44,
+          97379.
+          <br />
+          Esse programa exibe todos os números palíndromos dentro de um
+          intervalo definido por você.
+        </p>
+      </div>
+      <div className="form-group card">
         <input
           type="number"
           name="initial"
@@ -47,14 +50,14 @@ export default function Desafio1() {
           value={query.final}
           onChange={handleChange}
         />
+        <button name="submit" onClick={handleSubmit}>
+          Consultar
+        </button>
       </div>
-      <button name="submit" onClick={handleSubmit}>
-        Consultar
-      </button>
 
       {results && (
-        <div>
-          <h2>Respostas</h2>
+        <div className="response card">
+          <h2>Resposta</h2>
           <p>Esse é o resultado: </p>
           <textarea
             readOnly
