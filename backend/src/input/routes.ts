@@ -4,8 +4,7 @@ import {
   ListVehiclesController,
   MoneyController,
   PalindromeController,
-  RegisterCarController,
-  RegisterMotorcycleController,
+  RegisterVehicleController,
 } from "./controllers";
 
 const router = Router();
@@ -23,11 +22,8 @@ const configureRoutes = (vehiclesRepo: IVehicleRepository) => {
   router.post("/money", (req, res) => {
     new MoneyController().handle(req, res);
   });
-  router.post("/car", (req, res) => {
-    new RegisterCarController(vehiclesRepo).handle(req, res);
-  });
-  router.post("/motorcycle", (req, res) => {
-    new RegisterMotorcycleController(vehiclesRepo).handle(req, res);
+  router.post("/vehicles", (req, res) => {
+    new RegisterVehicleController(vehiclesRepo).handle(req, res);
   });
 
   return router;
