@@ -10,6 +10,7 @@ $color--green: #62fb4e;
 $color--light-green: #caffc3;
 
 body {
+  margin-top: 0;
   background-color: $color--bg;
   text-align: center;
   font-family: "Roboto", sans-serif;
@@ -18,6 +19,21 @@ body {
 code {
   font-weight: 600;
   color: $color--code;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  background-color: $color--card;
+  box-shadow: 0.5rem 0.5rem 1rem $color--shadow;
+
+  * {
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: 700;
+    margin: 1rem;
+  }
 }
 
 input[type="text"],
@@ -63,7 +79,7 @@ button,
   padding: 1rem;
   margin: 1rem auto;
   background-color: $color--card;
-  box-shadow: $color--shadow 1rem 0.5rem 1rem;
+  box-shadow: 0.5rem 0.5rem 1rem $color--shadow;
 }
 
 .response {
