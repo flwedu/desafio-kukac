@@ -1,3 +1,8 @@
+import checkNullOrEmpty from "../../../util/check-null";
+import {
+  BusinessLogicError,
+  ErrorMessages,
+} from "../../errors/business-logic-error";
 import IVehicle from "./vehicle";
 
 export interface CarProps {
@@ -17,6 +22,14 @@ export default class Car implements IVehicle {
   passengers: number;
 
   constructor({ model, year, doors, brand, passengers }: CarProps) {
+    if (
+      checkNullOrEmpty([model, year, doors, brand, passengers]) ||
+      passengers > 5 ||
+      doors > 4
+    ) {
+      throw new BusinessLogicError(ErrorMessages.PARAMETRO_INVALIDO);
+    }
+
     this.model = model;
     this.year = year;
     this.brand = brand;
