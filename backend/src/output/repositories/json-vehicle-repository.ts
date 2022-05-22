@@ -22,7 +22,7 @@ export class JsonVehicleRepository implements IVehicleRepository {
       const arr = JSON.parse(data);
       arr.vehicles.push(vehicle);
       await fs.writeFile(this.dbPath, JSON.stringify(arr));
-      return vehicle;
+      return `${vehicle.brand} ${vehicle.model} created`;
     } catch (error) {
       return this.returnError(error);
     }

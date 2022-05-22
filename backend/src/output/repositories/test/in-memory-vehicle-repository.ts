@@ -5,8 +5,13 @@ export class InMemoryVehicleRepository implements IVehicleRepository {
   list: IVehicle[] = [];
 
   async save(vehicle: IVehicle) {
+    const oldValue = this.list.length;
     this.list.push(vehicle);
-    return Promise.resolve(vehicle);
+
+    if (oldValue < this.list.length) {
+      return Promise.resolve(`${vehicle.brand} ${vehicle.model} created`);
+    }
+    return Promise.reject("Error creating vehicle");
   }
 
   async loadAll() {
