@@ -42,3 +42,16 @@ yarn dev
 # ...ou em modo produção
 yarn start
 ```
+
+## Dica: Executando as duas aplicações de uma vez 🥷
+
+Depois da instalação das dependências, é possível executar as duas partes de uma vez em um só terminal.
+Para isso, volte a página raiz do projeto e execute:
+
+```bash
+# Instalando o concurrently
+npm install
+
+# Comando para iniciar o frontend e o backend
+npm run dev:all
+```

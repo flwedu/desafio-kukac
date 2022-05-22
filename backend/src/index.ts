@@ -8,3 +8,11 @@ const routes = configureRoutes(vehiclesRepo);
 const { listen } = configureExpressApp(routes);
 
 listen(PORT);
+
+process.on("uncaughtException", (event) => {
+  console.error("Uncaught exception: ", event);
+});
+
+process.on("unhandledRejection", (event) => {
+  console.error("Unhandled rejection: ", event);
+});
