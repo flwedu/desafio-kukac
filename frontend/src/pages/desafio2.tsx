@@ -69,6 +69,7 @@ Cédulas utilizadas:
       <form onSubmit={handleSubmit} className="form-group card shadow rounded">
         <input
           required
+          min={0}
           type="number"
           name="price"
           placeholder="Preço do produto"

@@ -43,6 +43,7 @@ export default function Desafio1() {
       <form onSubmit={handleSubmit} className="form-group card shadow rounded">
         <input
           required
+          min={0}
           type="number"
           name="initial"
           placeholder="Valor inicial"
