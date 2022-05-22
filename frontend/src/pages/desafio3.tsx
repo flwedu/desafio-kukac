@@ -99,7 +99,7 @@ export default function Desafio3() {
           />
         </form>
       </div>
-      {results && <ResponseCard results={results} />}
+      <ResponseCard results={results} />
     </div>
   );
 }

@@ -60,8 +60,7 @@ export default function Desafio1() {
           Consultar
         </button>
       </div>
-
-      {results && <ResponseCard results={results} />}
+      <ResponseCard results={results} />
     </div>
   );
 }

@@ -85,8 +85,7 @@ Cédulas utilizadas:
           Consultar
         </button>
       </div>
-
-      {results && <ResponseCard results={results} />}
+      <ResponseCard results={results} />
     </div>
   );
 }
