@@ -25,6 +25,7 @@ export default function Desafio3() {
   function handleChange(event: any) {
     const { name, value } = event.target;
     setQuery({ ...query, [name]: value });
+    setResults("");
   }
 
   function handleSubmit(event: any) {
@@ -39,9 +40,7 @@ export default function Desafio3() {
   }
 
   function formatResponseAndSetResults(response: string) {
-    setResults(`Foi inserido um veículo com as seguintes propriedades:
-  ${JSON.stringify(response)}
-    `);
+    setResults(`Veículo ${query.brand} ${query.model} inserido`);
   }
 
   return (
