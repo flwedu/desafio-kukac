@@ -1,8 +1,8 @@
 //@ts-nocheck
 import {
-  BusinessLogicError,
   ErrorMessages,
-} from "../../application/errors/business-logic-error";
+  ValidationError,
+} from "../../application/errors/validation-error";
 import { InMemoryVehicleRepository } from "../../output/repositories/test/in-memory-vehicle-repository";
 import IVehicleRepository from "../../output/repositories/vehicle-repository";
 import { RegisterVehicleController } from "./register-vehicle-controller";
@@ -91,7 +91,7 @@ describe("Register vehicle controller class tests", () => {
       expect.assertions(3);
       expect(res.json).toHaveBeenCalledTimes(0);
       expect(next).toHaveBeenCalledWith(
-        new BusinessLogicError(ErrorMessages.PARAMETRO_INVALIDO)
+        new ValidationError(ErrorMessages.PARAMETRO_INVALIDO)
       );
       expect(spy).toHaveBeenCalledTimes(0);
     });

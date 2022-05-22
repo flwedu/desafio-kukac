@@ -1,7 +1,4 @@
-import {
-  BusinessLogicError,
-  ErrorMessages,
-} from "../errors/business-logic-error";
+import { ValidationError, ErrorMessages } from "../errors/validation-error";
 import PrintPalindromeUseCase from "./print-palindrome";
 
 describe("Print Palindrome class tests", () => {
@@ -33,9 +30,7 @@ describe("Print Palindrome class tests", () => {
     try {
       sut.execute(initial, final);
     } catch (err) {
-      expect(err).toEqual(
-        new BusinessLogicError(ErrorMessages.PALINDROME_INICIAL_EH_MAIOR)
-      );
+      expect(err).toEqual(new ValidationError(ErrorMessages.VALOR_INVALIDO));
     }
   });
 
@@ -52,7 +47,7 @@ describe("Print Palindrome class tests", () => {
     try {
       sut.execute(initial, final);
     } catch (err) {
-      expect(err).toEqual(new BusinessLogicError(ErrorMessages.VALOR_INVALIDO));
+      expect(err).toEqual(new ValidationError(ErrorMessages.VALOR_INVALIDO));
     }
   });
 });

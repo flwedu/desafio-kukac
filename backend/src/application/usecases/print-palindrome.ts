@@ -1,9 +1,6 @@
 import { testPalindrome } from "../../algorithms/palindrome";
 import { checkAndParseToNumber } from "../../util/util-functions";
-import {
-  BusinessLogicError,
-  ErrorMessages,
-} from "../errors/business-logic-error";
+import { ErrorMessages, ValidationError } from "../errors/validation-error";
 
 export default class PrintPalindromeUseCase {
   execute(initialValue: string | number, finalValue: string | number) {
@@ -13,7 +10,7 @@ export default class PrintPalindromeUseCase {
     ];
 
     if (initialValue > finalValue) {
-      throw new BusinessLogicError(ErrorMessages.PALINDROME_INICIAL_EH_MAIOR);
+      throw new ValidationError(ErrorMessages.VALOR_INVALIDO);
     }
 
     const numbers = [];

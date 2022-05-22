@@ -1,8 +1,8 @@
 //@ts-nocheck
 import {
-  BusinessLogicError,
   ErrorMessages,
-} from "../../application/errors/business-logic-error";
+  ValidationError,
+} from "../../application/errors/validation-error";
 import { MoneyController } from "./money-controller";
 
 describe("Money controller class tests", () => {
@@ -64,7 +64,7 @@ describe("Money controller class tests", () => {
     expect.assertions(2);
     expect(next).toHaveBeenCalledTimes(1);
     expect(next).toHaveBeenCalledWith(
-      new BusinessLogicError(ErrorMessages.VALOR_INVALIDO)
+      new ValidationError(ErrorMessages.VALOR_INVALIDO)
     );
   });
 });
