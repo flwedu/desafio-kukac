@@ -20,10 +20,10 @@ export class JsonVehicleRepository implements IVehicleRepository {
     try {
       const data = await fs.readFile(this.dbPath, "utf8");
       const arr = JSON.parse(data);
-      const oldLength = arr.length;
+      const oldLength = arr.vehicles.length;
 
       arr.vehicles.push(vehicle);
-      if (arr.length > oldLength) {
+      if (arr.vehicles.length > oldLength) {
         await fs.writeFile(this.dbPath, JSON.stringify(arr));
         return `${vehicle.brand} ${vehicle.model} created`;
       }
