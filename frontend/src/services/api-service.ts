@@ -3,7 +3,7 @@ export class ApiService {
 
   async get(path = "") {
     try {
-      const results = await fetch(this.url + path, {
+      const response = await fetch(this.url + path, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -12,9 +12,10 @@ export class ApiService {
         },
       });
 
-      if (results.ok) {
-        return await results.json();
+      if (response.ok) {
+        return await response.json();
       }
+      return Promise.reject(response);
     } catch (error) {
       return Promise.reject(error);
     }
@@ -22,7 +23,7 @@ export class ApiService {
 
   async post(query: string, path = "") {
     try {
-      const results = await fetch(this.url + path, {
+      const response = await fetch(this.url + path, {
         body: query,
         method: "POST",
         mode: "cors",
@@ -32,9 +33,10 @@ export class ApiService {
         },
       });
 
-      if (results.ok) {
-        return await results.json();
+      if (response.ok || response.status === 201) {
+        return await response.json();
       }
+      return Promise.reject(response);
     } catch (error) {
       return Promise.reject(error);
     }
