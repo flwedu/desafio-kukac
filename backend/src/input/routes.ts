@@ -13,17 +13,17 @@ const configureRoutes = (vehiclesRepo: IVehicleRepository) => {
   router.get("/status", (req, res) => {
     return res.status(200).send();
   });
-  router.get("/vehicles", (req, res) => {
-    new ListVehiclesController(vehiclesRepo).handle(req, res);
+  router.get("/vehicles", (req, res, next) => {
+    new ListVehiclesController(vehiclesRepo).handle(req, res, next);
   });
-  router.post("/palindrome", (req, res) => {
-    new PalindromeController().handle(req, res);
+  router.post("/palindrome", (req, res, next) => {
+    new PalindromeController().handle(req, res, next);
   });
-  router.post("/money", (req, res) => {
-    new MoneyController().handle(req, res);
+  router.post("/money", (req, res, next) => {
+    new MoneyController().handle(req, res, next);
   });
-  router.post("/vehicles", (req, res) => {
-    new RegisterVehicleController(vehiclesRepo).handle(req, res);
+  router.post("/vehicles", (req, res, next) => {
+    new RegisterVehicleController(vehiclesRepo).handle(req, res, next);
   });
 
   return router;
