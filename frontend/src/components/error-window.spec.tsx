@@ -14,8 +14,9 @@ describe("Error window component tests", () => {
       </ErrorContext.Provider>
     );
 
-    expect.assertions(2);
+    expect.assertions(3);
     expect(container.querySelector("#error-window")).toBeFalsy();
+    expect(container).toMatchInlineSnapshot("<div />");
     expect(logFn).toHaveBeenCalledTimes(0);
   });
 
@@ -32,9 +33,8 @@ describe("Error window component tests", () => {
 
     const errorWindow = container.querySelector("#error-window");
 
-    expect.assertions(4);
+    expect.assertions(3);
     expect(errorWindow).toBeTruthy();
-    expect(screen.getByText("Test Error")).toBeTruthy();
     expect(container).toMatchSnapshot();
     expect(logFn).toHaveBeenCalledTimes(1);
   });
