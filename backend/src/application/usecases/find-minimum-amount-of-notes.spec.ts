@@ -1,7 +1,4 @@
-import {
-  BusinessLogicError,
-  ErrorMessages,
-} from "../errors/business-logic-error";
+import { ErrorMessages, ValidationError } from "../errors/validation-error";
 import FindMinimumAmountOfNotes from "./find-minimum-amount-of-notes";
 
 describe("Find minimum amount of notes use case tests", () => {
@@ -26,11 +23,9 @@ describe("Find minimum amount of notes use case tests", () => {
   test("Should throw error if price > money", () => {
     try {
       const sut = new FindMinimumAmountOfNotes();
-      const result = sut.execute(5, 10);
+      sut.execute(5, 10);
     } catch (error) {
-      expect(error).toEqual(
-        new BusinessLogicError(ErrorMessages.VALOR_INVALIDO)
-      );
+      expect(error).toEqual(new ValidationError(ErrorMessages.VALOR_INVALIDO));
     }
   });
 });

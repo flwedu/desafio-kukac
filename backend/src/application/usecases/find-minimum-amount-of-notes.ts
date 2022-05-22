@@ -1,9 +1,6 @@
 import { greedy } from "../../algorithms/greedy";
 import { checkAndParseToNumber } from "../../util/util-functions";
-import {
-  BusinessLogicError,
-  ErrorMessages,
-} from "../errors/business-logic-error";
+import { ErrorMessages, ValidationError } from "../errors/validation-error";
 
 export default class FindMinimumAmountOfNotes {
   public availableNotes = [100, 10, 1];
@@ -15,7 +12,7 @@ export default class FindMinimumAmountOfNotes {
     ];
 
     if (price > money) {
-      throw new BusinessLogicError(ErrorMessages.VALOR_INVALIDO);
+      throw new ValidationError(ErrorMessages.VALOR_INVALIDO);
     }
 
     const returned = money - price;

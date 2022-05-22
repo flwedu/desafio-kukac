@@ -1,7 +1,7 @@
 import {
-  BusinessLogicError,
   ErrorMessages,
-} from "../application/errors/business-logic-error";
+  ValidationError,
+} from "../application/errors/validation-error";
 
 function checkAndParseToNumber(value: any) {
   if (
@@ -11,7 +11,7 @@ function checkAndParseToNumber(value: any) {
     value !== null
   )
     return Number(value);
-  throw new BusinessLogicError(ErrorMessages.VALOR_INVALIDO);
+  throw new ValidationError(ErrorMessages.VALOR_INVALIDO);
 }
 
 export { checkAndParseToNumber };

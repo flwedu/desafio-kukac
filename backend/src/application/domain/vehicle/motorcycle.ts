@@ -1,11 +1,13 @@
+import checkNullOrEmpty from "../../../util/check-null";
+import { ErrorMessages, ValidationError } from "../../errors/validation-error";
 import IVehicle from "./vehicle";
 
-export interface MotorcycleProps {
+export type MotorcycleProps = {
   model: string;
   year: number;
   brand: string;
   passengers: 1 | 2;
-}
+};
 
 export default class Motorcycle implements IVehicle {
   model: string;
@@ -16,6 +18,10 @@ export default class Motorcycle implements IVehicle {
   wheels = 2;
 
   constructor({ model, year, brand, passengers }: MotorcycleProps) {
+    if (checkNullOrEmpty([model, year, brand, passengers]) || passengers > 2) {
+      throw new ValidationError(ErrorMessages.PARAMETRO_INVALIDO);
+    }
+
     this.model = model;
     this.year = year;
     this.brand = brand;
