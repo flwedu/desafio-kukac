@@ -148,6 +148,7 @@ button,
 .grid {
   display: grid;
   justify-content: space-around;
+  align-items: center;
   &-2 {
     grid-template-columns: repeat(2, 1fr);
   }

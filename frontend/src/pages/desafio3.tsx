@@ -63,34 +63,32 @@ export default function Desafio3() {
           <input defaultChecked type="radio" value="car" name="type" /> Carro
           <input type="radio" value="motorcycle" name="type" /> Moto
         </div>
-        <form
-          onSubmit={handleSubmit}
-          name="form"
-          className="form-group grid grid-2"
-        >
-          <InputTextField
-            name="brand"
-            placeholder="Marca"
-            value={query.brand}
-          />
-          <InputTextField
-            name="model"
-            placeholder="Modelo"
-            value={query.model}
-          />
-          <input
-            type="number"
-            required
-            maxLength={4}
-            name="year"
-            id="year"
-            defaultValue={Number(query.year)}
-          />
-          {query.type === "car" ? (
-            <CarFormFields query={query} setQuery={setQuery} />
-          ) : (
-            <MotorcycleFormFields query={query} setQuery={setQuery} />
-          )}
+        <form onSubmit={handleSubmit} name="form" className="form-group">
+          <div className="grid grid-2">
+            <InputTextField
+              name="brand"
+              placeholder="Marca"
+              value={query.brand}
+            />
+            <InputTextField
+              name="model"
+              placeholder="Modelo"
+              value={query.model}
+            />
+            <input
+              type="number"
+              required
+              maxLength={4}
+              name="year"
+              id="year"
+              defaultValue={Number(query.year)}
+            />
+            {query.type === "car" ? (
+              <CarFormFields query={query} setQuery={setQuery} />
+            ) : (
+              <MotorcycleFormFields query={query} setQuery={setQuery} />
+            )}
+          </div>
           <input
             className="button"
             type="submit"
