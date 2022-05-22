@@ -7,7 +7,7 @@ export class MoneyController {
       const { money, price } = req.body;
       const results = new FindMinimumAmountOfNotes().execute(money, price);
       return res.status(200).json(results);
-    } catch (error) {
+    } catch (error: any) {
       next(error);
     }
   }
