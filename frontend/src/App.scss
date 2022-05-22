@@ -82,11 +82,9 @@ button,
 
 .card {
   max-width: 35rem;
-  border-radius: 8px;
   padding: 1rem;
   margin: 1rem auto;
   background-color: $color--card;
-  box-shadow: 0.5rem 0.5rem 1rem $color--shadow;
 }
 
 .response {
@@ -135,6 +133,14 @@ button,
 }
 
 // Special
+.shadow {
+  box-shadow: 0.5rem 0.5rem 1rem $color--shadow;
+}
+
+.rounded {
+  border-radius: 1rem;
+}
+
 .grid {
   display: grid;
   justify-content: space-around;

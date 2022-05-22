@@ -49,7 +49,7 @@ Cédulas utilizadas:
 
   return (
     <div>
-      <div className="card">
+      <div className="card shadow rounded">
         <h1>Desafio 2 - Troco</h1>
         <p>
           Esse algoritmo, conhecido como Greedy, decompõe um número de acordo
@@ -66,7 +66,7 @@ Cédulas utilizadas:
           calcular o troco e as cédulas utilizadas:
         </p>
       </div>
-      <div className="form-group card">
+      <div className="form-group card shadow rounded">
         <input
           type="number"
           name="price"

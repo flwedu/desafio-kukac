@@ -30,7 +30,7 @@ export default function Desafio1() {
 
   return (
     <div>
-      <div className="card">
+      <div className="card shadow rounded">
         <h1>Desafio 1 - Palíndromos</h1>
         <p>
           Números palíndromos são aqueles que escritos da direita para esquerda
@@ -41,7 +41,7 @@ export default function Desafio1() {
           intervalo definido por você.
         </p>
       </div>
-      <div className="form-group card">
+      <div className="form-group card shadow rounded">
         <input
           type="number"
           name="initial"

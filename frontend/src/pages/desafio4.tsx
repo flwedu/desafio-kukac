@@ -31,14 +31,14 @@ export default function Desafio4() {
 
   return (
     <div>
-      <div className="card">
+      <div className="card shadow rounded">
         <h1>Desafio 4 - Busca por CEP's</h1>
         <p>
           Digite abaixo um número de CEP para efetuar a busca pelos dados. Até 5
           CEP's podem ser informados por busca, um em cada linha.
         </p>
       </div>
-      <div className="form-group card">
+      <div className="form-group card shadow rounded">
         <textarea
           value={text}
           onChange={handleTextAreaChange}
@@ -48,7 +48,7 @@ export default function Desafio4() {
         <button onClick={handleSubmit}>Consultar</button>
       </div>
       {results.length > 0 && (
-        <div className="response card">
+        <div className="response card shadow rounded">
           <p>Esses são os resultados: </p>
 
           {results.map((result, index) => (

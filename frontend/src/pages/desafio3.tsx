@@ -34,10 +34,7 @@ export default function Desafio3() {
     // Verify if form is valid
     if (form.checkValidity()) {
       const queryData = JSON.stringify(query);
-      service
-        .post(queryData)
-        .then(formatResponseAndSetResults)
-        .catch(console.error);
+      service.post(queryData).then(formatResponseAndSetResults).catch(setError);
     }
   }
 
@@ -49,7 +46,7 @@ export default function Desafio3() {
 
   return (
     <div>
-      <div className="card">
+      <div className="card shadow rounded">
         <h1>Desafio 3 - Cadastro de Veículos</h1>
         <p>
           Essa aplicação permite o cadastro de veículos (motos ou carros), cada
@@ -59,7 +56,7 @@ export default function Desafio3() {
           das informações no banco de dados.
         </p>
       </div>
-      <div className="form-group card" onChange={handleChange}>
+      <div className="form-group card shadow rounded" onChange={handleChange}>
         <p>Dados do veículo:</p>
         <div className="flex flex-row">
           <span>Tipo:</span>
