@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import Express, { Router } from "express";
+import { errorHandler } from "../input/controllers";
 
 const app = Express();
 
@@ -11,6 +12,8 @@ const configureExpressApp = (routes?: Router) => {
 
   //Routes
   if (routes) app.use("/", routes);
+
+  app.use(errorHandler);
 
   // Listen method
   const listen = (port: number) => {
