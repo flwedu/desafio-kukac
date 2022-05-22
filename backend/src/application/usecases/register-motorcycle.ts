@@ -1,10 +1,10 @@
 import IVehicleRepository from "../../output/repositories/vehicle-repository";
-import Motorcycle, { MotorcycleProps } from "../domain/vehicle/motorcycle";
+import Motorcycle from "../domain/vehicle/motorcycle";
 
 export default class RegisterMotorcycleUseCase {
   constructor(private readonly repository: IVehicleRepository) {}
 
-  async execute(props: MotorcycleProps) {
+  async execute(props: any) {
     const moto = new Motorcycle(props);
     return this.repository.save(moto);
   }
