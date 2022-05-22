@@ -59,12 +59,14 @@ export default function CepForm({ submitFn }: CepFormProps) {
             name={String(index)}
           />
         ))}
-        <input
-          onClick={addInputButton}
-          type="button"
-          value="Adicionar"
-          className="button"
-        />
+        {inputQuantity < 5 && (
+          <input
+            onClick={addInputButton}
+            type="button"
+            value="Adicionar"
+            className="button"
+          />
+        )}
       </div>
       <input type="submit" value="Consultar" className="button" />
     </form>
