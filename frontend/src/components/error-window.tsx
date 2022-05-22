@@ -21,10 +21,14 @@ export function ErrorWindow({ logFn }: { logFn: Function }) {
     >
       <div className="header">{error.name}</div>
       <div className="body">
-        <p>
-          Ocorreu um erro ao processar sua requisição. Consulte o console do
-          navegador para mais detalhes.
-        </p>
+        {error.alert ? (
+          <p>{error.alert}</p>
+        ) : (
+          <p>
+            Ocorreu um erro ao processar sua requisição. Consulte o console do
+            navegador para mais detalhes.
+          </p>
+        )}
       </div>
       <button onClick={closeWindow}>Fechar</button>
     </div>
