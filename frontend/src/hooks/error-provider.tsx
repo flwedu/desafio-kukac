@@ -1,14 +1,14 @@
 import { createContext, useState } from "react";
 
 type ErrorContextType = {
-  error: Error | null;
-  setError: (err: Error | null) => void;
+  error: any;
+  setError: (err: any) => void;
 };
 
 const ErrorContext = createContext<ErrorContextType | null>(null);
 
 const ErrorContextProvider = ({ children }: { children: JSX.Element }) => {
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<any>(null);
 
   return (
     <ErrorContext.Provider value={{ error, setError }}>
