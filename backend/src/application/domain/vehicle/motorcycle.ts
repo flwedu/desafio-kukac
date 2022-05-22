@@ -10,15 +10,15 @@ export type MotorcycleProps = {
 export default class Motorcycle implements IVehicle {
   model: string;
   year: number;
-  doors = 0;
   brand: string;
-  wheels = 2;
   passengers: number;
+  doors = 0;
+  wheels = 2;
 
   constructor({ model, year, brand, passengers }: MotorcycleProps) {
     this.model = model;
     this.year = year;
     this.brand = brand;
-    this.passengers = Number(passengers);
+    this.passengers = passengers;
   }
 }

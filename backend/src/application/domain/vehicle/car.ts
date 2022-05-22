@@ -3,8 +3,9 @@ import IVehicle from "./vehicle";
 export type CarProps = {
   model: string;
   year: number;
-  doors: 2 | 3 | 4;
   brand: string;
+  doors: 2 | 3 | 4;
+  passengers: 1 | 2 | 3 | 4 | 5;
 };
 
 export default class Car implements IVehicle {
@@ -12,11 +13,14 @@ export default class Car implements IVehicle {
   year: number;
   doors: number;
   brand: string;
+  wheels: number = 4;
+  passengers: number;
 
-  constructor({ model, year, doors, brand }: CarProps) {
+  constructor({ model, year, doors, brand, passengers }: CarProps) {
     this.model = model;
     this.year = year;
-    this.doors = Number(doors);
     this.brand = brand;
+    this.doors = doors;
+    this.passengers = passengers;
   }
 }

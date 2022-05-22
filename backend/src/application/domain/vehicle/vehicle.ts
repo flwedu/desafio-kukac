@@ -3,4 +3,6 @@ export default interface IVehicle {
   year: number;
   doors: number;
   brand: string;
+  wheels: number;
+  passengers: number;
 }
