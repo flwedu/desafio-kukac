@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import useErrorContext from "../hooks/error-context";
 
-export function ErrorWindow() {
+export function ErrorWindow({ logFn }: { logFn: Function }) {
   const { error, setError } = useErrorContext();
 
   useEffect(() => {
     if (error) {
-      console.error(error);
+      logFn(error);
     }
   }, []);
 

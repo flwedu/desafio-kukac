@@ -8,11 +8,15 @@ import { ErrorContextProvider } from "./hooks/error-provider";
 import { Desafio1, Desafio2, Desafio3, Desafio4 } from "./pages";
 import Home from "./pages/home";
 
+const logFn = (message: any) => {
+  console.error(message);
+};
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ErrorContextProvider>
       <>
-        <ErrorWindow />
+        <ErrorWindow logFn={logFn} />
         <HashRouter>
           <NavBar />
           <Routes>
