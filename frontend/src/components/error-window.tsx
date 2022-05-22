@@ -15,7 +15,10 @@ export function ErrorWindow() {
   }
 
   return error ? (
-    <div className="error-window flex flex-col shadow rounded">
+    <div
+      id="error-window"
+      className="error-window flex flex-col shadow rounded"
+    >
       <div className="header">{error.name}</div>
       <div className="body">
         <div>{error.message}</div>

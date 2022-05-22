@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error window component tests Should render the component 1`] = `
+<div>
+  <div
+    class="error-window flex flex-col shadow rounded"
+    id="error-window"
+  >
+    <div
+      class="header"
+    >
+      Error
+    </div>
+    <div
+      class="body"
+    >
+      <div>
+        Test Error
+      </div>
+    </div>
+    <button>
+      Fechar
+    </button>
+  </div>
+</div>
+`;
