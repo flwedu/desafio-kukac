@@ -20,9 +20,14 @@ export class JsonVehicleRepository implements IVehicleRepository {
     try {
       const data = await fs.readFile(this.dbPath, "utf8");
       const arr = JSON.parse(data);
+      const oldLength = arr.length;
+
       arr.vehicles.push(vehicle);
-      await fs.writeFile(this.dbPath, JSON.stringify(arr));
-      return `${vehicle.brand} ${vehicle.model} created`;
+      if (arr.length > oldLength) {
+        await fs.writeFile(this.dbPath, JSON.stringify(arr));
+        return `${vehicle.brand} ${vehicle.model} created`;
+      }
+      throw new Error("Error adding vehicle to list");
     } catch (error) {
       return this.returnError(error);
     }
