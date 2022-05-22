@@ -29,10 +29,17 @@ nav {
   box-shadow: 0.5rem 0.5rem 1rem $color--shadow;
 
   * {
+    color: $color--main;
     text-decoration: none;
     font-size: x-large;
     font-weight: 700;
-    margin: 1rem;
+    padding: 0 1rem;
+
+    border-right: dotted $color--code 3px;
+
+    &:last-child {
+      border-right: none;
+    }
   }
 }
 
