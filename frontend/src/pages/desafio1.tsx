@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ResponseCard from "../components/response-card";
+import useErrorContext from "../hooks/error-context";
 import { ApiService } from "../services/api-service";
 
 export type Desafio1Query = {
@@ -9,6 +10,8 @@ export type Desafio1Query = {
 
 export default function Desafio1() {
   const service = new ApiService("http://localhost:3002/palindrome");
+
+  const { setError } = useErrorContext();
 
   const [query, setQuery] = useState<Desafio1Query>({ initial: "", final: "" });
   const [results, setResults] = useState("");
@@ -21,7 +24,7 @@ export default function Desafio1() {
   function handleSubmit() {
     if (query.initial.length > 0 && query.final.length > 0) {
       const queryData = JSON.stringify(query);
-      service.post(queryData).then(setResults).catch(console.error);
+      service.post(queryData).then(setResults).catch(setError);
     }
   }
 

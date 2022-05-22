@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ResponseCard from "../components/response-card";
+import useErrorContext from "../hooks/error-context";
 import { ApiService } from "../services/api-service";
 
 type Desafio2Query = {
@@ -18,6 +19,8 @@ type ResponseData = {
 export default function Desafio2() {
   const service = new ApiService("http://localhost:3002/money");
 
+  const { setError } = useErrorContext();
+
   const [query, setQuery] = useState<Desafio2Query>({ money: "", price: "" });
   const [results, setResults] = useState<string>("");
 
@@ -29,7 +32,7 @@ export default function Desafio2() {
   function handleSubmit() {
     if (query.money.length > 0 && query.price.length > 0) {
       const queryData = JSON.stringify(query);
-      service.post(queryData).then(formatResult).catch(console.error);
+      service.post(queryData).then(formatResult).catch(setError);
     }
   }
 

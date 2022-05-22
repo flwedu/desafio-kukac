@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import InputTextField from "../components/input-text-field";
 import ResponseCard from "../components/response-card";
+import useErrorContext from "../hooks/error-context";
 import { ApiService } from "../services/api-service";
 
 export default function Desafio3() {
   const service = new ApiService("http://localhost:3002/vehicles");
+
+  const { setError } = useErrorContext();
 
   const [query, setQuery] = useState({
     type: "car",

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import CepAddressCard from "../components/cep-address-card";
+import useErrorContext from "../hooks/error-context";
 import { ApiService } from "../services/api-service";
 
 export default function Desafio4() {
   const service = new ApiService("https://viacep.com.br/ws/");
+
+  const { setError } = useErrorContext();
 
   const [text, setText] = useState<string>("");
   const [results, setResults] = useState<string[]>([]);
@@ -14,9 +17,7 @@ export default function Desafio4() {
 
   async function handleSubmit() {
     const queries = formatQuery(text);
-    const results = await postAllQueries(queries);
-
-    setResults(results);
+    postAllQueries(queries).then(setResults).catch(setError);
   }
 
   async function postAllQueries(query: string[]) {
