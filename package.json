@@ -1,0 +1,18 @@
+{
+  "name": "desafio-kukac",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test:backend": "cd backend && yarn test",
+    "test:frontend": "cd frontend && yarn test",
+    "dev:all": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  },
+  "author": {
+    "name": "Eduardo Aquino",
+    "email": "edutraquino@gmail.com"
+  },
+  "dependencies": {
+    "concurrently": "^7.2.0"
+  }
+}
