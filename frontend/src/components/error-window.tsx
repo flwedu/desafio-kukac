@@ -21,7 +21,10 @@ export function ErrorWindow({ logFn }: { logFn: Function }) {
     >
       <div className="header">{error.name}</div>
       <div className="body">
-        <div>{error.message}</div>
+        <p>
+          Ocorreu um erro ao processar sua requisição. Consulte o console do
+          navegador para mais detalhes.
+        </p>
       </div>
       <button onClick={closeWindow}>Fechar</button>
     </div>
