@@ -16,18 +16,35 @@ describe("Register Motorcycle use case tests", () => {
     expect(result).toEqual("Honda Fireblade created");
   });
 
-  test("Should throw an error", async () => {
+  test.each([
+    {
+      passengers: 3,
+      brand: "Honda",
+      model: "Fireblade",
+      year: 2022,
+    },
+    {
+      passengers: 0,
+      brand: "Honda",
+      model: "Fireblade",
+      year: 2022,
+    },
+    {
+      brand: "Honda",
+      model: "Fireblade",
+      year: 2022,
+    },
+    {
+      passengers: 2,
+      model: "Fireblade",
+      year: 2022,
+    },
+  ])("Should throw an error", async (props) => {
     const repository = new InMemoryVehicleRepository();
     const sut = new RegisterMotorcycleUseCase(repository);
 
     try {
-      const result = await sut.execute({
-        //@ts-expect-error
-        passengers: 3,
-        brand: "Honda",
-        model: "Fireblade",
-        year: 2022,
-      });
+      await sut.execute(props);
     } catch (error) {
       expect(error).toEqual(expect.any(Error));
     }

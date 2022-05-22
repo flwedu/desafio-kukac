@@ -17,19 +17,37 @@ describe("Register Car use case tests", () => {
     expect(result).toEqual(`Ford Fiesta created`);
   });
 
-  test("Should throw an error", async () => {
+  test.each([
+    {
+      doors: 5,
+      brand: "Ford",
+      model: "Fiesta",
+      year: 2013,
+      passengers: 5,
+    },
+    {
+      brand: "Ford",
+      model: "Fiesta",
+      year: 2013,
+    },
+    {
+      brand: "Ford",
+      model: "Fiesta",
+      year: 2013,
+      passengers: 5,
+    },
+    {
+      doors: 4,
+      brand: "Ford",
+      model: "Fiesta",
+      year: 2013,
+    },
+  ])("Should throw an error", async (props) => {
     const repository = new InMemoryVehicleRepository();
     const sut = new RegisterCarUseCase(repository);
 
     try {
-      const result = await sut.execute({
-        //@ts-expect-error
-        doors: 5,
-        brand: "Ford",
-        model: "Fiesta",
-        year: 2013,
-        passengers: 5,
-      });
+      await sut.execute(props);
     } catch (error) {
       expect(error).toEqual(expect.any(Error));
     }
