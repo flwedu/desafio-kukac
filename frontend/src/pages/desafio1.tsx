@@ -21,11 +21,10 @@ export default function Desafio1() {
     setQuery({ ...query, [name]: value });
   }
 
-  function handleSubmit() {
-    if (query.initial.length > 0 && query.final.length > 0) {
-      const queryData = JSON.stringify(query);
-      service.post(queryData).then(setResults).catch(setError);
-    }
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    const queryData = JSON.stringify(query);
+    service.post(queryData).then(setResults).catch(setError);
   }
 
   return (
@@ -41,8 +40,10 @@ export default function Desafio1() {
           intervalo definido por você.
         </p>
       </div>
-      <div className="form-group card shadow rounded">
+      <form onSubmit={handleSubmit} className="form-group card shadow rounded">
         <input
+          required
+          min={0}
           type="number"
           name="initial"
           placeholder="Valor inicial"
@@ -50,18 +51,22 @@ export default function Desafio1() {
           onChange={handleChange}
         />
         <input
+          required
+          min={Number(query.initial) + 1}
           type="number"
           name="final"
           placeholder="Valor final"
           value={query.final}
           onChange={handleChange}
         />
-        <button name="submit" onClick={handleSubmit}>
-          Consultar
-        </button>
-      </div>
-
-      {results && <ResponseCard results={results} />}
+        <input
+          className="button"
+          type="submit"
+          name="submit"
+          value="Consultar"
+        />
+      </form>
+      <ResponseCard results={results} />
     </div>
   );
 }

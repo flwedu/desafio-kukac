@@ -58,6 +58,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+select {
+  padding: 0 1rem;
+}
+
 button,
 .button {
   border: transparent;
@@ -120,8 +124,10 @@ button,
 }
 
 .error-window {
-  top: 20vh;
-  left: 35vh;
+  top: 25%;
+  margin: 5% auto;
+  left: 0;
+  right: 0;
   position: fixed;
   width: 25rem;
   height: 15rem;
@@ -144,6 +150,7 @@ button,
 .grid {
   display: grid;
   justify-content: space-around;
+  align-items: center;
   &-2 {
     grid-template-columns: repeat(2, 1fr);
   }

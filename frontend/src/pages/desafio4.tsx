@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CepForm from "./../components/cep-form";
 import CepAddressCard from "../components/cep-address-card";
 import useErrorContext from "../hooks/error-context";
 import { ApiService } from "../services/api-service";
@@ -7,17 +8,10 @@ export default function Desafio4() {
   const service = new ApiService("https://viacep.com.br/ws/");
 
   const { setError } = useErrorContext();
-
-  const [text, setText] = useState<string>("");
   const [results, setResults] = useState<string[]>([]);
 
-  function handleTextAreaChange(event: any) {
-    setText(event.target.value);
-  }
-
-  async function handleSubmit() {
-    const queries = formatQuery(text);
-    postAllQueries(queries).then(setResults).catch(setError);
+  async function submit(arr: string[]) {
+    postAllQueries(arr).then(setResults).catch(setError);
   }
 
   async function postAllQueries(query: string[]) {
@@ -38,15 +32,7 @@ export default function Desafio4() {
           CEP's podem ser informados por busca, um em cada linha.
         </p>
       </div>
-      <div className="form-group card shadow rounded">
-        <textarea
-          value={text}
-          onChange={handleTextAreaChange}
-          rows={5}
-          placeholder="Digite aqui os números de CEP"
-        ></textarea>
-        <button onClick={handleSubmit}>Consultar</button>
-      </div>
+      <CepForm submitFn={submit} />
       {results.length > 0 && (
         <div className="response card shadow rounded">
           <p>Esses são os resultados: </p>
@@ -58,17 +44,4 @@ export default function Desafio4() {
       )}
     </div>
   );
-}
-
-function formatQuery(text: string): string[] {
-  // Sanitizing
-  text = text.replaceAll(/[a-z\-]/gi, "");
-  text = text.replaceAll(/[\s;,]/gi, "\n");
-
-  let arr = text.split("\n");
-  // Pick only the first 5 positions
-  // Add missing zeroes
-  arr = arr.slice(0, 5).map((el) => el.padEnd(8, "0"));
-
-  return arr;
 }

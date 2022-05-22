@@ -25,6 +25,7 @@ export default function Desafio3() {
   function handleChange(event: any) {
     const { name, value } = event.target;
     setQuery({ ...query, [name]: value });
+    setResults("");
   }
 
   function handleSubmit(event: any) {
@@ -39,9 +40,7 @@ export default function Desafio3() {
   }
 
   function formatResponseAndSetResults(response: string) {
-    setResults(`Foi inserido um veículo com as seguintes propriedades:
-  ${JSON.stringify(response)}
-    `);
+    setResults(`Veículo ${query.brand} ${query.model} inserido`);
   }
 
   return (
@@ -63,34 +62,32 @@ export default function Desafio3() {
           <input defaultChecked type="radio" value="car" name="type" /> Carro
           <input type="radio" value="motorcycle" name="type" /> Moto
         </div>
-        <form
-          onSubmit={handleSubmit}
-          name="form"
-          className="form-group grid grid-2"
-        >
-          <InputTextField
-            name="brand"
-            placeholder="Marca"
-            value={query.brand}
-          />
-          <InputTextField
-            name="model"
-            placeholder="Modelo"
-            value={query.model}
-          />
-          <input
-            type="number"
-            required
-            maxLength={4}
-            name="year"
-            id="year"
-            defaultValue={Number(query.year)}
-          />
-          {query.type === "car" ? (
-            <CarFormFields query={query} setQuery={setQuery} />
-          ) : (
-            <MotorcycleFormFields query={query} setQuery={setQuery} />
-          )}
+        <form onSubmit={handleSubmit} name="form" className="form-group">
+          <div className="grid grid-2">
+            <InputTextField
+              name="brand"
+              placeholder="Marca"
+              value={query.brand}
+            />
+            <InputTextField
+              name="model"
+              placeholder="Modelo"
+              value={query.model}
+            />
+            <input
+              type="number"
+              required
+              maxLength={4}
+              name="year"
+              id="year"
+              defaultValue={Number(query.year)}
+            />
+            {query.type === "car" ? (
+              <CarFormFields query={query} setQuery={setQuery} />
+            ) : (
+              <MotorcycleFormFields query={query} setQuery={setQuery} />
+            )}
+          </div>
           <input
             className="button"
             type="submit"
@@ -99,7 +96,7 @@ export default function Desafio3() {
           />
         </form>
       </div>
-      {results && <ResponseCard results={results} />}
+      <ResponseCard results={results} />
     </div>
   );
 }
@@ -111,16 +108,18 @@ function CarFormFields({ query, setQuery }: any) {
       ...query,
       passengers: "5",
       wheels: "4",
-      doors: "4",
+      doors: "2",
     });
   }, []);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col">
       <span>Quantidade de portas:</span>
-      <input type="radio" value="2" name="doors" /> 2
-      <input type="radio" value="3" name="doors" /> 3
-      <input type="radio" value="4" name="doors" defaultChecked /> 4
+      <select name="doors">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
     </div>
   );
 }
@@ -130,17 +129,19 @@ function MotorcycleFormFields({ query, setQuery }: any) {
   useEffect(() => {
     setQuery({
       ...query,
-      passengers: "2",
+      passengers: "1",
       wheels: "2",
       doors: "0",
     });
   }, []);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col">
       <span>Passageiros:</span>
-      <input type="radio" value="1" name="passengers" /> 1
-      <input type="radio" value="2" name="passengers" defaultChecked /> 2
+      <select name="passengers">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
     </div>
   );
 }

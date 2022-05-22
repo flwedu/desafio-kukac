@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error window component tests Should render the component 1`] = `
+<div>
+  <div
+    class="error-window flex flex-col shadow rounded"
+    id="error-window"
+  >
+    <div
+      class="header"
+    >
+      Error
+    </div>
+    <div
+      class="body"
+    >
+      <p>
+        Ocorreu um erro ao processar sua requisição. Consulte o console do navegador para mais detalhes.
+      </p>
+    </div>
+    <button>
+      Fechar
+    </button>
+  </div>
+</div>
+`;

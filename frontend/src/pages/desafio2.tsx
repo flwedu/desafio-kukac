@@ -29,11 +29,11 @@ export default function Desafio2() {
     setQuery({ ...query, [name]: value });
   }
 
-  function handleSubmit() {
-    if (query.money.length > 0 && query.price.length > 0) {
-      const queryData = JSON.stringify(query);
-      service.post(queryData).then(formatResult).catch(setError);
-    }
+  function handleSubmit(e: any) {
+    e.preventDefault();
+
+    const queryData = JSON.stringify(query);
+    service.post(queryData).then(formatResult).catch(setError);
   }
 
   function formatResult(response: ResponseData) {
@@ -66,8 +66,10 @@ Cédulas utilizadas:
           calcular o troco e as cédulas utilizadas:
         </p>
       </div>
-      <div className="form-group card shadow rounded">
+      <form onSubmit={handleSubmit} className="form-group card shadow rounded">
         <input
+          required
+          min={0}
           type="number"
           name="price"
           placeholder="Preço do produto"
@@ -75,18 +77,22 @@ Cédulas utilizadas:
           onChange={handleChange}
         />
         <input
+          min={Number(query.price) + 1}
+          required
           type="number"
           name="money"
           placeholder="Valor recebido"
           value={query.money}
           onChange={handleChange}
         />
-        <button name="submit" onClick={handleSubmit}>
-          Consultar
-        </button>
-      </div>
-
-      {results && <ResponseCard results={results} />}
+        <input
+          className="button"
+          type="submit"
+          name="submit"
+          value="Consultar"
+        />
+      </form>
+      <ResponseCard results={results} />
     </div>
   );
 }

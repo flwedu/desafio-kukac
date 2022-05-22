@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Response Card component tests Should render the component properly 1`] = `
+<div>
+  <div
+    class="response card shadow rounded"
+  >
+    <p>
+      Esse é o resultado: 
+    </p>
+    <textarea
+      id="results"
+      name="results"
+      readonly=""
+    >
+      Test Result
+    </textarea>
+  </div>
+</div>
+`;
