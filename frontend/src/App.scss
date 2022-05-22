@@ -121,6 +121,19 @@ button,
   }
 }
 
+.error-window {
+  top: 20vh;
+  left: 35vh;
+  position: fixed;
+  width: 25rem;
+  height: 15rem;
+  background-color: $color--card;
+
+  .header {
+    color: $color--code;
+  }
+}
+
 // Special
 .grid {
   display: grid;
