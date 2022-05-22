@@ -1,6 +1,4 @@
 import { InMemoryVehicleRepository } from "../../output/repositories/test/in-memory-vehicle-repository";
-import Car from "../domain/vehicle/car";
-import Motorcycle from "../domain/vehicle/motorcycle";
 import RegisterMotorcycleUseCase from "./register-motorcycle";
 
 describe("Register Motorcycle use case tests", () => {
@@ -15,7 +13,7 @@ describe("Register Motorcycle use case tests", () => {
       passengers: 1,
     });
 
-    expect(result).toMatchObject({ ...Motorcycle });
+    expect(result).toEqual("Honda Fireblade created");
   });
 
   test("Should throw an error", async () => {
