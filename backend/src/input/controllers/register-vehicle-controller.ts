@@ -24,7 +24,7 @@ class RegisterVehicleController {
         );
       }
 
-      return res.json(results);
+      return res.status(201).json(results);
     } catch (error) {
       next(error);
     }
