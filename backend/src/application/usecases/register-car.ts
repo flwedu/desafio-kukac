@@ -5,11 +5,7 @@ export default class RegisterCarUseCase {
   constructor(private readonly repository: IVehicleRepository) {}
 
   async execute(props: CarProps) {
-    try {
-      const car = new Car(props);
-      return this.repository.save(car);
-    } catch (error) {
-      return Promise.reject(error);
-    }
+    const car = new Car(props);
+    return this.repository.save(car);
   }
 }
