@@ -111,16 +111,18 @@ function CarFormFields({ query, setQuery }: any) {
       ...query,
       passengers: "5",
       wheels: "4",
-      doors: "4",
+      doors: "2",
     });
   }, []);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col">
       <span>Quantidade de portas:</span>
-      <input type="radio" value="2" name="doors" /> 2
-      <input type="radio" value="3" name="doors" /> 3
-      <input type="radio" value="4" name="doors" defaultChecked /> 4
+      <select name="doors">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
     </div>
   );
 }
@@ -130,17 +132,19 @@ function MotorcycleFormFields({ query, setQuery }: any) {
   useEffect(() => {
     setQuery({
       ...query,
-      passengers: "2",
+      passengers: "1",
       wheels: "2",
       doors: "0",
     });
   }, []);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col">
       <span>Passageiros:</span>
-      <input type="radio" value="1" name="passengers" /> 1
-      <input type="radio" value="2" name="passengers" defaultChecked /> 2
+      <select name="passengers">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
     </div>
   );
 }
