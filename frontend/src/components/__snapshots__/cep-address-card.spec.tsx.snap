@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cep Address Card components tests Should not render the component if address.cep is invalid 1`] = `<div />`;
+
+exports[`Cep Address Card components tests Should render the component properly 1`] = `
+<div>
+  <div
+    class="cep-card"
+    id="cep-card"
+  >
+    <div
+      class="header"
+    >
+      <h1>
+        CEP: 
+        44900-000
+      </h1>
+    </div>
+    <div
+      class="body"
+    >
+      <div
+        class="field"
+      >
+        Cidade
+        : 
+        Irecê
+      </div>
+      <div
+        class="field"
+      >
+        UF
+        : 
+        BA
+      </div>
+    </div>
+  </div>
+</div>
+`;

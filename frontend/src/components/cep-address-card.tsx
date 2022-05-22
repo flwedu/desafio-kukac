@@ -14,8 +14,8 @@ type AddressData = {
 export default function CepAddressCard({ data }: { data: any }) {
   const address = data as AddressData;
 
-  return (
-    <div className="cep-card">
+  return address.cep ? (
+    <div id="cep-card" className="cep-card">
       <div className="header">
         <h1>CEP: {address.cep}</h1>
       </div>
@@ -30,6 +30,8 @@ export default function CepAddressCard({ data }: { data: any }) {
         <CardField description="UF" text={address.uf} />
       </div>
     </div>
+  ) : (
+    <></>
   );
 }
 
