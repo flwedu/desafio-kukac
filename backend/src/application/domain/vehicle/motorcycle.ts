@@ -1,11 +1,11 @@
 import IVehicle from "./vehicle";
 
-export type MotorcycleProps = {
+export interface MotorcycleProps {
   model: string;
   year: number;
   brand: string;
   passengers: 1 | 2;
-};
+}
 
 export default class Motorcycle implements IVehicle {
   model: string;
