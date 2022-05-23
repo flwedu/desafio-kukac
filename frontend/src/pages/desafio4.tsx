@@ -28,8 +28,9 @@ export default function Desafio4() {
       <div className="card shadow rounded">
         <h1>Desafio 4 - Busca por CEP's</h1>
         <p>
-          Digite abaixo um número de CEP para efetuar a busca pelos dados. Até 5
-          CEP's podem ser informados por busca, um em cada linha.
+          Digite abaixo um número de CEP para efetuar a busca pelos dados. É
+          buscar por até 5 CEP's de uma vez, adicionando mais campos de busca
+          clicando em <code>Adicionar</code>.
         </p>
       </div>
       <CepForm submitFn={submit} />

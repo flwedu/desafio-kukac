@@ -52,14 +52,11 @@ Cédulas utilizadas:
       <div className="card shadow rounded">
         <h1>Desafio 2 - Troco</h1>
         <p>
-          Esse algoritmo, conhecido como Greedy, decompõe um número de acordo
-          com os valores possíveis.
+          Para resolver esse desafio, será utilizado o algoritmo Greedy, que
+          serve para calcular a quantidade de notas utilizadas em um troco.
           <br />
-          Para ilustrar sua utilização, será usado um exemplo de transação em
-          que é necessário se calcular quantas notas deverão ser utilizadas para
-          passar um troco.
+          Os valores das notas possíveis para este exemplo são:
           <br />
-          Os valores das notas possíveis para este exemplo são:{" "}
           <code>R$ 100</code>, <code>R$ 10</code> e <code>R$ 1</code>.
           <br />
           Digite abaixo o preço de um objeto fictício e o valor recebido para
