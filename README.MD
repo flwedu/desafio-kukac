@@ -50,8 +50,8 @@ Para isso, volte a página raiz do projeto e execute:
 
 ```bash
 # Instalando o concurrently
-npm install
+yarn add concurrently
 
 # Comando para iniciar o frontend e o backend
-npm run dev:all
+yarn dev:all
 ```
